@@ -13,8 +13,23 @@ nav {
   height: 5rem;
 }
 
-nav > h1 {
+.render-home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.render-home-page > h1 {
   font-size: 32px;
+}
+.render-home-page > .home-icon {
+  font-size: 2.1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .container-cart-icon {

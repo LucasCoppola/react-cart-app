@@ -4,8 +4,11 @@ import useFetch from '../hooks/useFetch';
 
 const Home = () => {
   // press add to cart ---> be in the cart page
-
+  const [addItem, setAddItem] = useState([]);
   const { data } = useFetch();
+
+  function addToCart(id) {}
+
   return (
     <div className="product-list">
       {data.map((product) => (
@@ -17,7 +20,12 @@ const Home = () => {
             <h3>{product.title}</h3>
             <p className="price">${product.price}</p>
             <p className="description">{product.description}</p>
-            <button className="add-to-cart-btn">Add to Cart</button>
+            <button
+              className="add-to-cart-btn"
+              onClick={() => addToCart(product.id)}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       ))}

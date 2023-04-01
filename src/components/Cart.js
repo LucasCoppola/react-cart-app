@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product';
-import useFetch from '../hooks/useFetch';
 
-const Cart = () => {
-  const { data } = useFetch();
+const Cart = ({ data }) => {
+  // add the selected items from the home page
+  // selected itemFromHomePage === item.id (from data)
+  console.log(data);
 
-  const renderProducts = data.map(({ id, title, images, price }) => (
-    <Product key={id} title={title} images={images} price={price} />
-  ));
+  // const renderProducts = data.map(({ id, title, images, price }) => (
+  //   <Product key={id} title={title} images={images} price={price} />
+  // ));
 
   return (
     <section>
       <h1>Your Bag</h1>
-      <div className="cart">{renderProducts}</div>
+      {/* <div className="cart">{renderProducts}</div> */}
       <div>
         <hr />
         <div className="cart-total">
