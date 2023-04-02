@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './home.css'
+import { CartContext } from './CartContext'
 
 const Home = ({ data }) => {
 	// press add to cart ---> be in the cart page
-	const [addItem, setAddItem] = useState([])
+	const [cartItems, setCartItems] = useContext(CartContext)
 
 	function addToCart(id) {
 		const itemsId = data.map((item) => item.id)
 		for (let i = 0; i < itemsId.length; i++) {
 			if (itemsId[i] === id) {
-				setAddItem([...addItem, id])
+				setCartItems([...cartItems, id])
+				// console.log(cartItems)
 			}
 		}
 	}

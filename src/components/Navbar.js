@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AiFillHome, AiOutlineShoppingCart } from 'react-icons/ai'
+import { CartContext } from './CartContext'
 
 const Navbar = () => {
+	const [cartItems] = useContext(CartContext)
+
 	return (
 		<nav>
 			<a href="/">
@@ -13,7 +16,7 @@ const Navbar = () => {
 			<div className="container-cart-icon">
 				<a href="/cart">
 					<AiOutlineShoppingCart className="cart-icon" />
-					<span className="cart-amount">0</span>
+					<span className="cart-amount">{cartItems.length}</span>
 				</a>
 			</div>
 		</nav>
