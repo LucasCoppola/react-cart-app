@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import './home.css'
-import useFetch from '../hooks/useFetch'
 
-const Home = () => {
+const Home = ({ data }) => {
 	// press add to cart ---> be in the cart page
 	const [addItem, setAddItem] = useState([])
-	const { data } = useFetch()
 
-	function addToCart(id) {}
+	function addToCart(id) {
+		const itemsId = data.map((item) => item.id)
+		for (let i = 0; i < itemsId.length; i++) {
+			if (itemsId[i] === id) {
+				setAddItem([...addItem, id])
+			}
+		}
+	}
 
 	return (
 		<div className="product-list">

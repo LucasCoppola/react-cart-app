@@ -13,12 +13,13 @@ const Cart = ({ data }) => {
 	return (
 		<section>
 			<h1>Your Bag</h1>
+
 			{/* <div className="cart">{renderProducts}</div> */}
 			<div>
 				<hr />
 				<div className="cart-total">
 					<h5>Total</h5>
-					<span>$177.99</span>
+					<span>$0</span>
 				</div>
 				<button className="clear-btn shadow-drop-2-center">Clear Cart</button>
 			</div>
