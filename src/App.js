@@ -8,20 +8,18 @@ import useFetch from './hooks/useFetch'
 import { CartContext } from './components/CartContext'
 
 export default function App() {
-	const [cartItems, setCartItems] = useState(() => JSON.parse(localStorage.getItem('cartItems')) || [])
-
-	// localStorage.clear()
+	const [selectedItems, setSelectedItems] = useState(() => JSON.parse(localStorage.getItem('selectedItems')) || [])
 
 	useEffect(() => {
-		localStorage.setItem('cartItems', JSON.stringify(cartItems))
-	}, [cartItems])
+		localStorage.setItem('selectedItems', JSON.stringify(selectedItems))
+	}, [selectedItems])
 
 	const { data } = useFetch()
 
 	return (
 		<div>
 			<BrowserRouter>
-				<CartContext.Provider value={[cartItems, setCartItems]}>
+				<CartContext.Provider value={[selectedItems, setSelectedItems]}>
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home data={data} />} />

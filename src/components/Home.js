@@ -3,15 +3,13 @@ import './home.css'
 import { CartContext } from './CartContext'
 
 const Home = ({ data }) => {
-	// press add to cart ---> be in the cart page
-	const [cartItems, setCartItems] = useContext(CartContext)
+	const [selectedItems, setSelectedItems] = useContext(CartContext)
 
 	function addToCart(id) {
 		const itemsId = data.map((item) => item.id)
 		for (let i = 0; i < itemsId.length; i++) {
 			if (itemsId[i] === id) {
-				setCartItems([...cartItems, id])
-				// console.log(cartItems)
+				setSelectedItems([...selectedItems, id])
 			}
 		}
 	}
@@ -27,7 +25,11 @@ const Home = ({ data }) => {
 						<h3>{product.title}</h3>
 						<p className="price">${product.price}</p>
 						<p className="description">{product.description}</p>
-						<button className="add-to-cart-btn" onClick={() => addToCart(product.id)}>
+						<button
+							className="add-to-cart-btn"
+							onClick={() => addToCart(product.id)}
+							disabled={selectedItems.includes(product.id)}
+						>
 							Add to Cart
 						</button>
 					</div>

@@ -3,31 +3,35 @@ import Product from './Product'
 import { CartContext } from './CartContext'
 
 const Cart = ({ data }) => {
-	// add the selected items from the home page
-	// selected itemFromHomePage === item.id (from data)
-	const [cartItems, setCartItems] = useContext(CartContext)
+	const [selectedItems, setSelectedItems] = useContext(CartContext)
+	const [cartItems, setCartItems] = useState([])
 
-	console.log(cartItems)
+	useEffect(() => {
+		const itemsAdded = data.filter((product) => selectedItems.includes(product.id))
+		setCartItems(itemsAdded)
+		// console.log(cartItems)
+	}, [selectedItems, data])
 
-	// const renderProducts = data.map(({ id, title, images, price }) => (
-	//   <Product key={id} title={title} images={images} price={price} />
-	// ));
+	const renderProducts = cartItems.map(({ id, title, images, price }) => (
+		<Product key={id} title={title} images={images} price={price} />
+	))
+
+	const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
 
 	function clearCart() {
 		localStorage.clear()
-		setCartItems([])
+		setSelectedItems([])
 	}
 
 	return (
 		<section>
 			<h1>Your Bag</h1>
-
-			{/* <div className="cart">{renderProducts}</div> */}
+			<div className="cart">{renderProducts}</div>
 			<div>
 				<hr />
 				<div className="cart-total">
 					<h5>Total</h5>
-					<span>$0</span>
+					<span>${totalPrice}</span>
 				</div>
 				<button className="clear-btn shadow-drop-2-center" onClick={clearCart}>
 					Clear Cart
