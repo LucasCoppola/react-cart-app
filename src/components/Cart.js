@@ -9,14 +9,36 @@ const Cart = ({ data }) => {
 	useEffect(() => {
 		const itemsAdded = data.filter((product) => selectedItems.includes(product.id))
 		setCartItems(itemsAdded)
-		// console.log(cartItems)
 	}, [selectedItems, data])
 
+	function handleQtyChange(id, qty) {
+		// update the qty
+		setCartItems((prevCartItems) => {
+			return prevCartItems.map((item) => {
+				if (item.id === id) {
+					return {
+						...item,
+						qty: qty,
+						productTotalPrice: qty * item.price
+					}
+				}
+				return item
+			})
+		})
+	}
 	const renderProducts = cartItems.map(({ id, title, images, price }) => (
-		<Product key={id} title={title} images={images} price={price} />
+		<Product
+			key={id}
+			title={title}
+			images={images}
+			price={price}
+			handleQtyChange={(qty) => handleQtyChange(id, qty)}
+		/>
 	))
 
-	const totalPrice = cartItems.reduce((acc, curr) => acc + curr.price, 0)
+	const totalPrice = cartItems.reduce((acc, { price, productTotalPrice }) => {
+		return acc + (productTotalPrice ? productTotalPrice : price)
+	}, 0)
 
 	function clearCart() {
 		localStorage.clear()

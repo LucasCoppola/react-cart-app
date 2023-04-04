@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa'
 
-const Product = ({ title, images, price }) => {
-	// add a product when buttonUp clicked
+const Product = ({ title, images, price, handleQtyChange }) => {
 	const [productQty, setProductQty] = useState(1)
+
+	useEffect(() => {
+		handleQtyChange(productQty)
+	}, [productQty])
 
 	return (
 		<article className="cart-product">
