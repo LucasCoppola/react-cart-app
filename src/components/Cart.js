@@ -11,6 +11,10 @@ const Cart = ({ data }) => {
 		setCartItems(itemsAdded)
 	}, [selectedItems, data])
 
+	function handleDelete(id) {
+		setSelectedItems((prevItems) => prevItems.filter((itemId) => itemId !== id))
+	}
+
 	function handleQtyChange(id, qty) {
 		// update the qty
 		setCartItems((prevCartItems) => {
@@ -33,6 +37,7 @@ const Cart = ({ data }) => {
 			images={images}
 			price={price}
 			handleQtyChange={(qty) => handleQtyChange(id, qty)}
+			handleDelete={() => handleDelete(id)}
 		/>
 	))
 

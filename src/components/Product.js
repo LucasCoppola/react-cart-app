@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa'
 
-const Product = ({ title, images, price, handleQtyChange }) => {
+const Product = ({ title, images, price, handleQtyChange, handleDelete }) => {
 	const [productQty, setProductQty] = useState(1)
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ const Product = ({ title, images, price, handleQtyChange }) => {
 					<FaChevronUp />
 				</button>
 				<span>{productQty}</span>
-				<button onClick={() => setProductQty((prevQty) => prevQty - 1)} disabled={productQty <= 1}>
+				<button onClick={productQty === 1 ? handleDelete : () => setProductQty((prevQty) => prevQty - 1)}>
 					<FaChevronDown />
 				</button>
 			</div>
