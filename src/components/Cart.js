@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Product from './Product'
 import { CartContext } from './CartContext'
+import ShowAlert from './Alert'
 
 const Cart = ({ data }) => {
 	const [selectedItems, setSelectedItems] = useContext(CartContext)
 	const [cartItems, setCartItems] = useState([])
+	// Alert effect
+	const [open, setOpen] = useState(false)
 
 	useEffect(() => {
 		const itemsAdded = data.filter((product) => selectedItems.includes(product.id))
@@ -13,6 +16,7 @@ const Cart = ({ data }) => {
 
 	function handleDelete(id) {
 		setSelectedItems((prevItems) => prevItems.filter((itemId) => itemId !== id))
+		setOpen(true)
 	}
 
 	function handleQtyChange(id, qty) {
@@ -52,7 +56,8 @@ const Cart = ({ data }) => {
 
 	return (
 		<section>
-			<h1>Your Bag</h1>
+			<ShowAlert open={open} setOpen={setOpen} message={'Product removed from cart'} />
+			{cartItems.length > 0 ? <h1>Cart</h1> : <h1>Cart is empty :(</h1>}
 			<div className="cart">{renderProducts}</div>
 			<div>
 				<hr />
