@@ -8,11 +8,12 @@ const Navbar = () => {
 	return (
 		<nav>
 			<a href="/">
-				<div className="render-home-page">
+				<div className="home">
 					<AiFillHome className="home-icon" />
 					<h1>Add To Cart</h1>
 				</div>
 			</a>
+
 			<div className="container-cart-icon">
 				<a href="/cart">
 					<AiOutlineShoppingCart className="cart-icon" />

@@ -12,20 +12,21 @@ nav {
 	align-items: center;
 	height: 5rem;
 }
-
-.render-home-page {
+/* navbar home */
+.home {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
 }
 
-.render-home-page > h1 {
+.home > h1 {
 	font-size: 32px;
 }
-.render-home-page > .home-icon {
+.home > .home-icon {
 	font-size: 2.1rem;
 }
+/* navbar home */
 
 a {
 	color: inherit;

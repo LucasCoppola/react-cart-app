@@ -6,7 +6,7 @@ import ShowAlert from './Alert'
 const Cart = ({ data }) => {
 	const [selectedItems, setSelectedItems] = useContext(CartContext)
 	const [cartItems, setCartItems] = useState([])
-	// Alert effect
+	// Alert
 	const [open, setOpen] = useState(false)
 
 	useEffect(() => {
