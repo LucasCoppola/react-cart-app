@@ -17,7 +17,7 @@ export default function App() {
 	const { data } = useFetch()
 
 	return (
-		<div>
+		<>
 			<BrowserRouter>
 				<CartContext.Provider value={[selectedItems, setSelectedItems]}>
 					<Navbar />
@@ -27,6 +27,6 @@ export default function App() {
 					</Routes>
 				</CartContext.Provider>
 			</BrowserRouter>
-		</div>
+		</>
 	)
 }

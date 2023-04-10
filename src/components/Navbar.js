@@ -1,24 +1,25 @@
 import React, { useContext } from 'react'
 import { AiFillHome, AiOutlineShoppingCart } from 'react-icons/ai'
 import { CartContext } from './CartContext'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 	const [cartItems] = useContext(CartContext)
 
 	return (
 		<nav>
-			<a href="/">
+			<Link to="/">
 				<div className="home">
 					<AiFillHome className="home-icon" />
 					<h1>Add To Cart</h1>
 				</div>
-			</a>
+			</Link>
 
 			<div className="container-cart-icon">
-				<a href="/cart">
+				<Link to="/cart">
 					<AiOutlineShoppingCart className="cart-icon" />
 					<span className="cart-amount">{cartItems.length}</span>
-				</a>
+				</Link>
 			</div>
 		</nav>
 	)
