@@ -12,6 +12,7 @@ const Home = ({ data }) => {
 		const itemsId = data.map((item) => item.id)
 		for (let i = 0; i < itemsId.length; i++) {
 			if (itemsId[i] === id) {
+				// Passing the selected items to the cartContext
 				setSelectedItems([...selectedItems, id])
 			}
 		}
